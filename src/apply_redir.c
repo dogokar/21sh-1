@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dogokar <dogokar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/26 18:04:03 by alallema          #+#    #+#             */
-/*   Updated: 2017/04/28 01:16:00 by alallema         ###   ########.fr       */
+/*   Created: 2017/05/03 21:29:11 by dogokar           #+#    #+#             */
+/*   Updated: 2017/05/03 21:29:55 by dogokar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ int			list_int2(t_list *list, int (*f)(void *, int, int), int d, int t)
 		list = list->next;
 	}
 	return (0);
-}
-
-void			list_iter_int2(t_list *list, int (*f)(void *, int, int),
-int token, int dofork)
-{
-	while (list)
-	{
-		f(list->content, token, dofork);
-		list = list->next;
-	}
 }
 
 static int	return_or_exit(char *error, int dofork)

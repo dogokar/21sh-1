@@ -3,34 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin_export.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbelouni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dogokar <dogokar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/26 18:08:02 by nbelouni          #+#    #+#             */
-/*   Updated: 2017/04/26 18:10:07 by nbelouni         ###   ########.fr       */
+/*   Created: 2017/05/03 20:20:49 by dogokar           #+#    #+#             */
+/*   Updated: 2017/05/03 20:32:20 by dogokar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-/*
-**		prend un maillon de varaible contenue dans n'importe quel liste et
-**		l'insert dans la liste de variable d'environnement
-*/
-
 int			insert_to_env(t_elem *node, char *arg, t_lst *env, t_lst *type_env)
 {
 	char	*val;
 	int		ret;
-	char 	*i;
+	char	*i;
 
 	ret = 0;
 	val = NULL;
 	i = ft_strchr(arg, '=');
-	if ((ft_strlen(node->name)  + 1) < ft_strlen(arg) && i)
+	if ((ft_strlen(node->name) + 1) < ft_strlen(arg) && i)
 	{
 		if ((val = ft_strsub(arg, ft_strlen(node->name) + 1,
-					(ft_strlen(arg) - ft_strlen(node->name) + 1))) == NULL)
-				return (ft_free_and_return(ERR_EXIT, node->name, NULL, NULL));
+						(ft_strlen(arg) - ft_strlen(node->name) + 1))) == NULL)
+			return (ft_free_and_return(ERR_EXIT, node->name, NULL, NULL));
 		ft_strdel(&(node->value));
 		node->value = ft_strdup(val);
 		ft_strdel(&val);
@@ -41,10 +36,6 @@ int			insert_to_env(t_elem *node, char *arg, t_lst *env, t_lst *type_env)
 		move_to_env(node, env, type_env);
 	return (0);
 }
-
-/*
-**			va chercher la variable dans une liste
-*/
 
 t_elem		*search_var(char *arg, t_lst *type_env)
 {
@@ -62,11 +53,6 @@ t_elem		*search_var(char *arg, t_lst *type_env)
 	ft_strdel(&name);
 	return (tmp);
 }
-
-/*
-**		insert_to_exp va verifier si la variable comporte un '='
-**		si c'est le cas il va l'inserer dans l'env si non dans la liste d'exp
-*/
 
 int			insert_to_exp(char *argv, t_core *m_env)
 {
@@ -86,12 +72,6 @@ int			insert_to_exp(char *argv, t_core *m_env)
 	return (0);
 }
 
-/*
-**	va chercher dans les diffrents listes de varaiable, si la variable
-**	existe il va l'inserer dans l'env
-**	si non il va la cree avec insert_to_exp
-*/
-
 static int	multi_var_check(char *argv, t_core *m_env)
 {
 	t_elem	*tmp;
@@ -109,10 +89,6 @@ static int	multi_var_check(char *argv, t_core *m_env)
 		return (insert_to_exp(argv, m_env));
 	return (-1);
 }
-
-/*
-**   gestion des erreurs et debut de fonction
-*/
 
 int			ft_builtin_export(t_core *m_env, char **argv)
 {

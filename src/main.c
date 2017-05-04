@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maissa-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dogokar <dogokar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/26 18:05:24 by maissa-b          #+#    #+#             */
-/*   Updated: 2017/05/03 20:37:48 by maissa-b         ###   ########.fr       */
+/*   Created: 2017/05/03 21:13:34 by dogokar           #+#    #+#             */
+/*   Updated: 2017/05/03 21:27:47 by dogokar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ static t_builtin_array g_builtin_array[] =
 	{NULL, NULL}
 };
 
-/*
-**	  init_core initialisation des liste d'env
-*/
-
 int			parse_builtins(t_core *core, char *cmd, char **cmd_args)
 {
 	int	i;
@@ -49,10 +45,6 @@ int			parse_builtins(t_core *core, char *cmd, char **cmd_args)
 	}
 	return (1);
 }
-
-/*
-**   si l'entree est different du terminal va lire ligne par ligne GNL
-*/
 
 static int	launch_execution(int ret, t_token *list)
 {
